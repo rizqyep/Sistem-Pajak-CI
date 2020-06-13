@@ -188,12 +188,28 @@
                                             </p>
                                         </a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a href="<?= base_url(); ?>admin/historypembayaran" class="nav-link">
+                                            <i class="nav-icon fa fa-check"></i>
+                                            <p>
+                                                Pembayaran Terverifikasi
+                                            </p>
+                                        </a>
+                                    </li>
                                 <?php } else { ?>
                                     <li class="nav-item">
                                         <a href="<?= base_url(); ?>user/listkendaraan" class="nav-link">
                                             <i class="nav-icon fa fa-file"></i>
                                             <p>
-                                                Upload Bukti Pembayaran
+                                                Status Pajak Kendaraan
+                                            </p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="<?= base_url(); ?>user/historybayar" class="nav-link">
+                                            <i class="nav-icon fa fa-book"></i>
+                                            <p>
+                                                Riwayat Pembayaran
                                             </p>
                                         </a>
                                     </li>

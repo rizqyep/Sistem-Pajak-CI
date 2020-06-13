@@ -13,7 +13,8 @@ class Kendaraan_model extends CI_model
 
     public function get_kendaraan_user($nama)
     {
-        return $this->db->get_where('kendaraan', ['pemilik' => $nama, 'status_bayar' => 'Menunggu pembayaran'])->result_array();
+        $this->db->like('status_bayar', 'Menunggu');
+        return $this->db->get('kendaraan')->result_array();
     }
 
     public function insert_data_kd()
@@ -22,8 +23,22 @@ class Kendaraan_model extends CI_model
             "pemilik" => $this->input->post('pemilik', true),
             "jenis" => $this->input->post('jenis', true),
             "tenggat" => $this->input->post('tenggat', true),
+            "nopol" => $this->input->post('nopol', true),
+            "nominal_pajak" => $this->input->post('nominal', true)
         ];
         $this->db->insert('kendaraan', $data);
+    }
+
+    public function update_kendaraan($id)
+    {
+        $data = [
+            "jenis" => $this->input->post('jenis', true),
+            "tenggat" => $this->input->post('tenggat', true),
+            "nopol" => $this->input->post('nopol', true),
+            "nominal_pajak" => $this->input->post('nominal', true)
+        ];
+        $this->db->where('id', $id);
+        $this->db->update('kendaraan', $data);
     }
 
     public function himbau_pembayaran_pajak($id, $status_bayar, $status_pajak)
@@ -48,6 +63,10 @@ class Kendaraan_model extends CI_model
         return $this->db->get('kendaraan')->row_array();
     }
 
+    public function get_history_pembayaran()
+    {
+        return $this->db->get_where('kendaraan', ['status_bayar' => 'Terverifikasi'])->result_array();
+    }
     public function verifikasi_pembayaran($id, $tenggat_baru)
     {
         $data = [
@@ -58,6 +77,21 @@ class Kendaraan_model extends CI_model
         $this->db->where('id', $id);
         $this->db->update('kendaraan', $data);
     }
+
+    public function get_amount_pembayaran()
+    {
+        return $this->db->get_where('kendaraan', ['status_bayar' => 'Terverifikasi'])->num_rows();
+    }
+
+    public function get_amount_kendaraan()
+    {
+        return $this->db->get('kendaraan')->num_rows();
+    }
+    public function get_amount_waitlist()
+    {
+        return $this->db->get_where('kendaraan', ['status_bayar' => 'Menunggu verifikasi'])->num_rows();
+    }
+
 
     public function update_data_bayar($id)
     {

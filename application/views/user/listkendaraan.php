@@ -72,7 +72,10 @@
                                     Pajak sudah jatuh tempo
                                 <?php } ?>
                             </h5>
-
+                            <h5 class="card-text">
+                                Nominal yang harus dibayar :
+                                <?= $kendaraan['nominal_pajak']; ?>
+                            </h5>
                             <h5 class="card-text">
                                 Status Pajak Terkini :
                                 <?= $kendaraan['status_pajak']; ?>
@@ -87,13 +90,14 @@
                 <?php
                     $rows += 1;
                 endforeach; ?>
-                <?php if ($rows == 0) { ?>
-                    <div class="row">
-                        <h1>Semua Pajak Kendaraan Anda Sudah Terverifikasi!</h1>
-                    </div>
+
+            </div>
+        </div>
+        <?php if ($rows == 0) { ?>
+            <div class="row">
+                <h1>Semua Pajak Kendaraan Anda Sudah Terverifikasi!</h1>
             </div>
         <?php } ?>
-        </div>
         <!--End row  -->
     </div>
 </div>

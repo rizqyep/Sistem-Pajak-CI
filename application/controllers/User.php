@@ -72,15 +72,40 @@ class User extends CI_Controller
         }
     }
 
-    function updatebukti($id)
+    public function updatebukti($id)
     {
+        $this->load->model('history_model');
         $kendaraan = $this->kendaraan_model->get_kendaraan($id);
         $nama = $kendaraan['pemilik'];
         $msg_notif = $nama . " telah mengupload bukti pembayaran untuk kendaraan " . $kendaraan['jenis'] . " dengan nomor polisi " . $kendaraan['nopol'];
         $id_kendaraan = $kendaraan['id'];
+        $u_kendaraan = $kendaraan['jenis'];
+        $nominal = $kendaraan['nominal_pajak'];
+        $nopol = $kendaraan['nopol'];
         $this->notif_model->add_notif('admin', $id_kendaraan, $msg_notif);
         $this->kendaraan_model->update_data_bayar($id);
+        $this->history_model->insert_history($nama, $u_kendaraan, $nominal, $nopol);
         $this->session->set_flashdata('user_bayar', 'berhasil di upload!');
         redirect(base_url() . "user/listkendaraan");
+    }
+
+    public function historybayar()
+    {
+        $data['judul'] = 'Sistem Pajak - History Pemabayaran';
+        $this->load->model('history_model');
+        if ($this->session->userdata('akses') == '2') {
+            $data['session'] = $this->session->userdata();
+            $nama = $this->session->userdata('ses_nama');
+            $data['jumlah_notif'] = $this->notif_model->get_user_notif_amount($nama)->num_rows();
+            $data['notifikasi'] = $this->notif_model->get_user_notif($nama);
+            $data['notifikasi_new'] = $this->notif_model->get_user_notif_new($nama);
+            $data['pembayaran'] = $this->history_model->get_history_user($nama);
+            $this->load->view('templates/header', $data);
+            $this->load->view('user/historybayar', $data);
+            $this->load->view('templates/footer');
+        } else {
+
+            redirect('login');
+        }
     }
 }

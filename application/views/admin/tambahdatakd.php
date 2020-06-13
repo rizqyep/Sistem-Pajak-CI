@@ -30,6 +30,14 @@
                                 <input type="text" class="form-control" name="jenis" id="jenis" placeholder="Jenis Kendaraan" required>
                             </div>
                             <div class="form-group">
+                                <label for="nopol">Nomor Polisi</label>
+                                <input type="text" class="form-control" name="nopol" id="nopol" placeholder="Nomor Polisi" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="nominal">Nominal Pajak</label>
+                                <input type="text" class="form-control" name="nominal" id="nominal" placeholder="Nominal Pajak" required>
+                            </div>
+                            <div class=" form-group">
                                 <label for="exampleInputPassword1">Tenggat Pajak</label>
                                 <input type="date" class="form-control" name="tenggat" id="tenggat" placeholder="Tenggat Pajak" required>
                             </div>

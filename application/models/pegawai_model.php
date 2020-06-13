@@ -54,4 +54,9 @@ class Pegawai_model extends CI_model
         $this->db->where('id', $id);
         $this->db->delete('user');
     }
+
+    public function get_amount_pegawai()
+    {
+        return $this->db->get('user')->num_rows();
+    }
 }

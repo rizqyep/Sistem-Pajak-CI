@@ -21,6 +21,10 @@ class Admin extends CI_Controller
             $data['jumlah_notif'] = $this->notif_model->get_user_notif_amount($nama)->num_rows();
             $data['notifikasi'] = $this->notif_model->get_user_notif($nama);
             $data['notifikasi_new'] = $this->notif_model->get_user_notif_new($nama);
+            $data['jumlah_kendaraan'] = $this->kendaraan_model->get_amount_kendaraan();
+            $data['jumlah_bayar'] = $this->kendaraan_model->get_amount_pembayaran();
+            $data['jumlah_input'] = $this->kendaraan_model->get_amount_waitlist();
+            $data['jumlah_pegawai'] = $this->pegawai_model->get_amount_pegawai();
             $this->load->view('templates/header', $data);
             $this->load->view('admin/index', $data);
             $this->load->view('templates/footer');
@@ -199,6 +203,13 @@ class Admin extends CI_Controller
         }
     }
 
+    public function updatedatakd($id)
+    {
+        $this->kendaraan_model->update_kendaraan($id);
+        $this->session->set_flashdata('kendaraan', 'diubah!');
+        redirect(base_url() . "admin/datakendaraan");
+    }
+
 
     public function detailkendaraan($id)
     {
@@ -287,5 +298,23 @@ class Admin extends CI_Controller
         $this->notif_model->add_notif($pemilik, $id_kendaraan, $msg_notif);
         $this->session->set_flashdata('pembayaran', 'diverifikasi!');
         redirect(base_url() . "admin/pembayaran");
+    }
+
+    public function historypembayaran()
+    {
+        if ($this->session->userdata('akses') == '1') {
+            $data['judul'] = 'Sistem Pajak - History Pembayaran';
+            $data['session'] = $this->session->userdata();
+            $nama = $this->session->userdata('ses_nama');
+            $data['jumlah_notif'] = $this->notif_model->get_user_notif_amount($nama)->num_rows();
+            $data['notifikasi'] = $this->notif_model->get_user_notif($nama);
+            $data['notifikasi_new'] = $this->notif_model->get_user_notif_new($nama);
+            $data['pembayaran'] = $this->kendaraan_model->get_history_pembayaran();
+            $this->load->view("templates/header", $data);
+            $this->load->view("admin/historypembayaran", $data);
+            $this->load->view("templates/footer");
+        } else {
+            redirect('login');
+        }
     }
 }
