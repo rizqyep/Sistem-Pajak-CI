@@ -136,9 +136,16 @@
                     <div class="sidebar">
                         <!-- Sidebar user panel (optional) -->
                         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-
+                            <div class="image">
+                                <?php if ($current['foto'] != NULL) : ?>
+                                    <img src="<?= base_url(); ?>upload/user/<?= $current['foto']; ?>" class="img-circle elevation-2" alt="User Image">
+                                <?php endif; ?>
+                            </div>
                             <div class="info">
-                                <a href="#" class="d-block">Login Sebagai : <?= $session['ses_nama']; ?></a>
+                                <a href="<?= base_url(); ?>user/profil/<?= $session['ses_nama']; ?>" class="d-block"><?= $session['ses_nama']; ?></a>
+                                <p style="color : white;">NIP : <?= $current['nip']; ?></p>
+                                <p style="color : white;">Unit : <?= $current['unit']; ?></p>
+                                <p style="color : white;">Jabatan : <?= $current['jabatan']; ?></p>
                             </div>
                         </div>
 

@@ -13,6 +13,7 @@ class Kendaraan_model extends CI_model
 
     public function get_kendaraan_user($nama)
     {
+        $this->db->where('pemilik', $nama);
         $this->db->like('status_bayar', 'Menunggu');
         return $this->db->get('kendaraan')->result_array();
     }

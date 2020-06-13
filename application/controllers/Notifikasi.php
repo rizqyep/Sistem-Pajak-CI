@@ -20,6 +20,7 @@ class Notifikasi extends CI_Controller
         $data['jumlah_notif'] = $this->notif_model->get_user_notif_amount($nama)->num_rows();
         $data['notifikasi'] = $this->notif_model->get_user_notif($nama);
         $data['notifikasi_new'] = $this->notif_model->get_user_notif_new($nama);
+        $data['current'] = $this->pegawai_model->get_pegawai_nama($nama);
         $nama = $this->session->userdata('ses_nama');
         $data['judul'] = "Sistem Pajak - Pusat Notifikasi";
         $this->load->view('templates/header', $data);

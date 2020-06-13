@@ -2,7 +2,9 @@
     <div class="container">
         <div class="row mt-3">
             <div class="col-12">
-                <?php foreach ($notifikasi as $notif) : ?>
+                <?php
+                $rows = 0;
+                foreach ($notifikasi as $notif) : ?>
                     <div class="card">
                         <?php
                         // Declare and define two dates 
@@ -57,9 +59,16 @@
                             <span class="float-right text-muted "><?= $msg; ?> yang lalu</span>
                         </div>
                     </div>
-                <?php endforeach; ?>
+                <?php
+                    $rows += 1;
+                endforeach; ?>
                 <!--End Card-->
             </div>
+        </div>
+        <div class="row">
+            <?php if ($rows == 0) { ?>
+                <h3>Anda Tidak memiliki notifikasi apapun</h3>
+            <?php } ?>
         </div>
     </div>
 </div>

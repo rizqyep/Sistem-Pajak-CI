@@ -64,12 +64,14 @@
                             <?= $pembayaran['status_bayar']; ?>
                         </h5>
                         <h5 class="card-text">
-                            Bukti Pembayaran<br>
+                            Bukti Pembayaran
 
                             <?php if ($pembayaran['bukti_pembayaran'] != NULL) { ?>
-                                <img src="<?= base_url(); ?>upload/bukti/<?= $pembayaran['bukti_pembayaran']; ?>" alt="">
+                                <div>
+                                    <img width="300" src="<?= base_url(); ?>upload/bukti/<?= $pembayaran['bukti_pembayaran']; ?>" alt="">
+                                </div>
                             <?php } else {
-                                echo "Belum upload bukti pembayaran";
+                                echo "<br><h4>Belum upload bukti pembayaran</h4>";
                             } ?>
                         </h5>
                         <a href="<?= base_url(); ?>admin/pembayaran" class="btn btn-success mt-2">Kembali</a>

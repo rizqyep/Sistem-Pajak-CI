@@ -23,6 +23,7 @@ class User extends CI_Controller
             $data['jumlah_notif'] = $this->notif_model->get_user_notif_amount($nama)->num_rows();
             $data['notifikasi'] = $this->notif_model->get_user_notif($nama);
             $data['notifikasi_new'] = $this->notif_model->get_user_notif_new($nama);
+            $data['current'] = $this->pegawai_model->get_pegawai_nama($nama);
             $this->load->view('templates/header', $data);
             $this->load->view('user/index', $data);
             $this->load->view('templates/footer');
@@ -43,6 +44,7 @@ class User extends CI_Controller
             $data['notifikasi'] = $this->notif_model->get_user_notif($nama);
             $data['notifikasi_new'] = $this->notif_model->get_user_notif_new($nama);
             $data['kendaraan_user'] = $this->kendaraan_model->get_kendaraan_user($nama);
+            $data['current'] = $this->pegawai_model->get_pegawai_nama($nama);
             $this->load->view('templates/header', $data);
             $this->load->view('user/listkendaraan', $data);
             $this->load->view('templates/footer');
@@ -63,6 +65,7 @@ class User extends CI_Controller
             $data['notifikasi'] = $this->notif_model->get_user_notif($nama);
             $data['notifikasi_new'] = $this->notif_model->get_user_notif_new($nama);
             $data['kendaraan'] = $this->kendaraan_model->get_kendaraan($id);
+            $data['current'] = $this->pegawai_model->get_pegawai_nama($nama);
             $this->load->view('templates/header', $data);
             $this->load->view('user/uploadpembayaran', $data);
             $this->load->view('templates/footer');
@@ -100,11 +103,30 @@ class User extends CI_Controller
             $data['notifikasi'] = $this->notif_model->get_user_notif($nama);
             $data['notifikasi_new'] = $this->notif_model->get_user_notif_new($nama);
             $data['pembayaran'] = $this->history_model->get_history_user($nama);
+            $data['current'] = $this->pegawai_model->get_pegawai_nama($nama);
             $this->load->view('templates/header', $data);
             $this->load->view('user/historybayar', $data);
             $this->load->view('templates/footer');
         } else {
 
+            redirect('login');
+        }
+    }
+
+    public function profil($nama)
+    {
+        $data['judul'] = 'Sistem Pajak - Profil User';
+        $this->load->model('history_model');
+        if ($this->session->userdata('akses') == '2') {
+            $data['session'] = $this->session->userdata();
+            $data['jumlah_notif'] = $this->notif_model->get_user_notif_amount($nama)->num_rows();
+            $data['notifikasi'] = $this->notif_model->get_user_notif($nama);
+            $data['notifikasi_new'] = $this->notif_model->get_user_notif_new($nama);
+            $data['current'] = $this->pegawai_model->get_pegawai_nama($nama);
+            $this->load->view('templates/header', $data);
+            $this->load->view('user/profil', $data);
+            $this->load->view('templates/footer');
+        } else {
             redirect('login');
         }
     }

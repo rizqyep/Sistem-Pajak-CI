@@ -8,8 +8,9 @@
         <div class="row mt-3">
             <div class="col-12">
                 <?php
-
-                foreach ($pembayaran as $bayar) : ?>
+                $rows = 0;
+                foreach ($pembayaran as $bayar) :
+                ?>
                     <div class="card">
                         <div class="card-header">
                             <h2>Riwayat Pembayaran</h2>
@@ -29,10 +30,15 @@
                         </div>
                     </div>
                 <?php
-
+                    $rows += 1;
                 endforeach; ?>
             </div>
         </div>
         <!--End row  -->
+        <div class="row">
+            <?php if ($rows == 0) { ?>
+                <h3>Anda Belum Melakukan pembayaran</h3>
+            <?php } ?>
+        </div>
     </div>
 </div>

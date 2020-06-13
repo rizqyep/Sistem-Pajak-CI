@@ -13,8 +13,12 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="<?= base_url(); ?>admin/insertdatapg" method="POST">
+                    <form action="<?= base_url(); ?>admin/insertdatapg" method="POST" enctype="multipart/form-data">
                         <div class="card-body">
+                            <div class="form-group">
+                                <label for="bukti">Upload Foto Pegawai</label>
+                                <input type="file" class="form-control-file" name="foto" id="foto">
+                            </div>
                             <div class="form-group">
                                 <label for="nama">Nama Pegawai</label>
                                 <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama pegawai">
@@ -31,6 +35,31 @@
                                 <label for="nip">NIP</label>
                                 <input type="text" class="form-control" name="nip" id="nip" placeholder="NIP">
                             </div>
+                            <div class="form-group">
+                                <label for="unit">Unit</label>
+                                <input type="text" class="form-control" name="unit" id="unit" placeholder="Unit">
+                            </div>
+                            <div class="form-group">
+                                <label for="jabatan">Jabatan</label>
+                                <input type="text" class="form-control" name="jabatan" id="jabatan" placeholder="Jabatan">
+                            </div>
+                            <div class="form-group">
+                                <label for="agama">Agama</label>
+                                <input type="text" class="form-control" name="agama" id="agama" placeholder="Agama">
+                            </div>
+                            <div class="form-group">
+                                <label for="pendidikan">Pendidikan</label>
+                                <input type="text" class="form-control" name="pendidikan" id="pendidikan" placeholder="Pendidikan">
+                            </div>
+                            <div class="form-group">
+                                <label for="telp">Nomor Telepon</label>
+                                <input type="text" class="form-control" name="telp" id="telp" placeholder="Nomor Telepon">
+                            </div>
+                            <div class="form-group">
+                                <label for="lahir">Tanggal Kelahiran</label>
+                                <input type="date" class="form-control" name="lahir" id="lahir" placeholder="lahir">
+                            </div>
+
 
 
                         </div>

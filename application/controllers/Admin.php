@@ -25,6 +25,7 @@ class Admin extends CI_Controller
             $data['jumlah_bayar'] = $this->kendaraan_model->get_amount_pembayaran();
             $data['jumlah_input'] = $this->kendaraan_model->get_amount_waitlist();
             $data['jumlah_pegawai'] = $this->pegawai_model->get_amount_pegawai();
+            $data['current'] = $this->pegawai_model->get_pegawai_nama($nama);
             $this->load->view('templates/header', $data);
             $this->load->view('admin/index', $data);
             $this->load->view('templates/footer');
@@ -48,6 +49,7 @@ class Admin extends CI_Controller
             $data['notifikasi'] = $this->notif_model->get_user_notif($nama);
             $data['notifikasi_new'] = $this->notif_model->get_user_notif_new($nama);
             $data['user'] = $this->pegawai_model->get_all_pegawai();
+            $data['current'] = $this->pegawai_model->get_pegawai_nama($nama);
             $this->load->view('templates/header', $data);
             $this->load->view('admin/datapegawai', $data);
             $this->load->view('templates/footer');
@@ -66,6 +68,7 @@ class Admin extends CI_Controller
             $data['notifikasi'] = $this->notif_model->get_user_notif($nama);
             $data['notifikasi_new'] = $this->notif_model->get_user_notif_new($nama);
             $data['user'] = $this->pegawai_model->get_all_pegawai();
+            $data['current'] = $this->pegawai_model->get_pegawai_nama($nama);
             $this->load->view("templates/header", $data);
             $this->load->view("admin/tambahdatapg");
             $this->load->view("templates/footer");
@@ -91,6 +94,7 @@ class Admin extends CI_Controller
             $data['notifikasi'] = $this->notif_model->get_user_notif($nama);
             $data['notifikasi_new'] = $this->notif_model->get_user_notif_new($nama);
             $data['user'] = $this->pegawai_model->get_pegawai($id);
+            $data['current'] = $this->pegawai_model->get_pegawai_nama($nama);
             $this->load->view("templates/header", $data);
             $this->load->view("admin/ubahdatapg", $data);
             $this->load->view("templates/footer");
@@ -117,6 +121,7 @@ class Admin extends CI_Controller
             $data['notifikasi'] = $this->notif_model->get_user_notif($nama);
             $data['notifikasi_new'] = $this->notif_model->get_user_notif_new($nama);
             $data['user'] = $this->pegawai_model->get_pegawai($id);
+            $data['current'] = $this->pegawai_model->get_pegawai_nama($nama);
             $this->load->view("templates/header", $data);
             $this->load->view("admin/detailpegawai", $data);
             $this->load->view("templates/footer");
@@ -148,6 +153,7 @@ class Admin extends CI_Controller
             $data['notifikasi'] = $this->notif_model->get_user_notif($nama);
             $data['notifikasi_new'] = $this->notif_model->get_user_notif_new($nama);
             $data['kendaraan'] = $this->kendaraan_model->get_all_kendaraan();
+            $data['current'] = $this->pegawai_model->get_pegawai_nama($nama);
             $this->load->view("templates/header", $data);
             $this->load->view("admin/datakendaraan", $data);
             $this->load->view("templates/footer");
@@ -166,6 +172,7 @@ class Admin extends CI_Controller
             $data['notifikasi'] = $this->notif_model->get_user_notif($nama);
             $data['notifikasi_new'] = $this->notif_model->get_user_notif_new($nama);
             $data['user'] = $this->pegawai_model->get_all_pegawai();
+            $data['current'] = $this->pegawai_model->get_pegawai_nama($nama);
             $this->load->view("templates/header", $data);
             $this->load->view("admin/tambahdatakd", $data);
             $this->load->view("templates/footer");
@@ -195,6 +202,7 @@ class Admin extends CI_Controller
             $data['notifikasi'] = $this->notif_model->get_user_notif($nama);
             $data['notifikasi_new'] = $this->notif_model->get_user_notif_new($nama);
             $data['kendaraan'] = $this->kendaraan_model->get_kendaraan($id);
+            $data['current'] = $this->pegawai_model->get_pegawai_nama($nama);
             $this->load->view("templates/header", $data);
             $this->load->view("admin/ubahdatakd", $data);
             $this->load->view("templates/footer");
@@ -221,6 +229,7 @@ class Admin extends CI_Controller
             $data['notifikasi'] = $this->notif_model->get_user_notif($nama);
             $data['notifikasi_new'] = $this->notif_model->get_user_notif_new($nama);
             $data['kendaraan'] = $this->kendaraan_model->get_kendaraan($id);
+            $data['current'] = $this->pegawai_model->get_pegawai_nama($nama);
             $this->load->view("templates/header", $data);
             $this->load->view("admin/detailkendaraan", $data);
             $this->load->view("templates/footer");
@@ -260,6 +269,7 @@ class Admin extends CI_Controller
             $data['notifikasi'] = $this->notif_model->get_user_notif($nama);
             $data['notifikasi_new'] = $this->notif_model->get_user_notif_new($nama);
             $data['pembayaran'] = $this->kendaraan_model->get_all_pembayaran();
+            $data['current'] = $this->pegawai_model->get_pegawai_nama($nama);
             $this->load->view("templates/header", $data);
             $this->load->view("admin/pembayaran", $data);
             $this->load->view("templates/footer");
@@ -278,6 +288,7 @@ class Admin extends CI_Controller
             $data['notifikasi'] = $this->notif_model->get_user_notif($nama);
             $data['notifikasi_new'] = $this->notif_model->get_user_notif_new($nama);
             $data['pembayaran'] = $this->kendaraan_model->get_pembayaran($id);
+            $data['current'] = $this->pegawai_model->get_pegawai_nama($nama);
             $this->load->view("templates/header", $data);
             $this->load->view("admin/detailpembayaran", $data);
             $this->load->view("templates/footer");
@@ -310,6 +321,7 @@ class Admin extends CI_Controller
             $data['notifikasi'] = $this->notif_model->get_user_notif($nama);
             $data['notifikasi_new'] = $this->notif_model->get_user_notif_new($nama);
             $data['pembayaran'] = $this->kendaraan_model->get_history_pembayaran();
+            $data['current'] = $this->pegawai_model->get_pegawai_nama($nama);
             $this->load->view("templates/header", $data);
             $this->load->view("admin/historypembayaran", $data);
             $this->load->view("templates/footer");

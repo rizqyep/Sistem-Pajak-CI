@@ -11,10 +11,22 @@ class Pegawai_model extends CI_model
     {
         $password = $this->input->post('password', true);
         $password = password_hash($password, PASSWORD_DEFAULT);
+        if (!empty($_FILES['foto']['name'])) {
+            $foto = $this->_uploadImage();
+        }
+
         $data = [
+
             "nama" => $this->input->post('nama', true),
+            "foto" => $foto,
             "username" => $this->input->post('username', true),
             "nip" => $this->input->post('nip', true),
+            "unit" => $this->input->post('unit', true),
+            "jabatan" => $this->input->post('jabatan', true),
+            "pendidikan" => $this->input->post('pendidikan', true),
+            "telp" => $this->input->post('telp', true),
+            "agama" => $this->input->post('agama', true),
+            "tanggal_lahir" => $this->input->post('lahir', true),
             "password" => $password,
         ];
         $this->db->insert('user', $data);
@@ -26,7 +38,12 @@ class Pegawai_model extends CI_model
             "nama" => $this->input->post('nama', true),
             "username" => $this->input->post('username', true),
             "nip" => $this->input->post('nip', true),
-            "jumlah_kendaraan" => $this->input->post('jumlah_kd', true)
+            "unit" => $this->input->post('unit', true),
+            "jabatan" => $this->input->post('jabatan', true),
+            "pendidikan" => $this->input->post('pendidikan', true),
+            "telp" => $this->input->post('telp', true),
+            "agama" => $this->input->post('agama', true),
+            "tanggal_lahir" => $this->input->post('lahir', true),
         ];
         $this->db->where('id', $id);
         $this->db->update('user', $data);
@@ -58,5 +75,21 @@ class Pegawai_model extends CI_model
     public function get_amount_pegawai()
     {
         return $this->db->get('user')->num_rows();
+    }
+    private function _uploadImage()
+    {
+        $config['upload_path']          = './upload/user/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['file_name']            = "foto_user";
+        $config['overwrite']            = true;
+        $config['max_size']             = 1024;
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('foto')) {
+            return $this->upload->data("file_name");
+        }
+
+        return "default.jpg";
     }
 }
