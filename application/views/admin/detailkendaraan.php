@@ -61,7 +61,7 @@
                             <?php if ($msg != "") { ?>
                                 (Berakhir dalam : <?= $msg; ?>)
                             <?php } else { ?>
-                                Pajak sudah jatuh tempo
+                                <span style="color : red">(Pajak sudah jatuh tempo)</span>
                             <?php } ?>
                         </h5>
 
