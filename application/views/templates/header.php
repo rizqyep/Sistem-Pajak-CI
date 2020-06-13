@@ -142,10 +142,14 @@
                                 <?php endif; ?>
                             </div>
                             <div class="info">
-                                <a href="<?= base_url(); ?>user/profil/<?= $session['ses_nama']; ?>" class="d-block"><?= $session['ses_nama']; ?></a>
+
+                                <a href="#" class="d-block"><?= $session['ses_nama']; ?></a>
                                 <p style="color : white;">NIP : <?= $current['nip']; ?></p>
                                 <p style="color : white;">Unit : <?= $current['unit']; ?></p>
                                 <p style="color : white;">Jabatan : <?= $current['jabatan']; ?></p>
+                                <?php if ($session['akses'] == 2) { ?>
+                                    <a class="btn btn-sm btn-primary" href="<?= base_url(); ?>user/profil/<?= $session['ses_nama']; ?>">Lihat Profil</a>
+                                <?php } ?>
                             </div>
                         </div>
 
