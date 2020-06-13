@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-12 mt-3">
                     <div class="alert alert-success alert-dismissable fade show">
-                        Kendaraan berhasil <strong><?= $this->session->flashdata('kendaraan'); ?></strong>
+                        Berhasil <strong><?= $this->session->flashdata('kendaraan'); ?></strong>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

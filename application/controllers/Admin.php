@@ -189,7 +189,7 @@ class Admin extends CI_Controller
         $jumlah_kd_sekarang = $current['jumlah_kendaraan'];
         $this->kendaraan_model->insert_data_kd();
         $this->pegawai_model->update_jumlah_kd($nama, $jumlah_kd_sekarang);
-        $this->session->set_flashdata('kendaraan', 'ditambahkan!');
+        $this->session->set_flashdata('kendaraan', 'menambahkan kendaraan !');
         redirect('admin/datakendaraan');
     }
 
@@ -249,13 +249,13 @@ class Admin extends CI_Controller
         $this->notif_model->add_notif($nama, $id_kendaraan, $msg_notif);
         $this->kendaraan_model->himbau_pembayaran_pajak($id, "Menunggu Pembayaran", "Menunggu Pembayaran");
         $url = base_url() . "admin/datakendaraan";
-        $this->session->set_flashdata('notifikasi', 'dikirimkan!');
+        $this->session->set_flashdata('kendaraan', 'mengirimkan notifikasi pembayaran pajak!');
         redirect($url);
     }
     public function hapuskendaraan($id)
     {
         $this->kendaraan_model->delete_kendaraan($id);
-        $this->session->set_flashdata('kendaraan', 'dihapus!');
+        $this->session->set_flashdata('kendaraan', 'menghapus kendaraan!');
         redirect('admin/datakendaraan');
     }
 
