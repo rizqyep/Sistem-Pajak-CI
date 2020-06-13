@@ -26,6 +26,7 @@ class Admin extends CI_Controller
             $data['jumlah_input'] = $this->kendaraan_model->get_amount_waitlist();
             $data['jumlah_pegawai'] = $this->pegawai_model->get_amount_pegawai();
             $data['current'] = $this->pegawai_model->get_pegawai_nama($nama);
+            $data['kendaraan'] = $this->kendaraan_model->get_all_kendaraan();
             $this->load->view('templates/header', $data);
             $this->load->view('admin/index', $data);
             $this->load->view('templates/footer');
@@ -251,6 +252,13 @@ class Admin extends CI_Controller
         $this->session->set_flashdata('notifikasi', 'dikirimkan!');
         redirect($url);
     }
+    public function hapuskendaraan($id)
+    {
+        $this->kendaraan_model->delete_kendaraan($id);
+        $this->session->set_flashdata('kendaraan', 'dihapus!');
+        redirect('admin/datakendaraan');
+    }
+
 
     /*
     ============================================================================

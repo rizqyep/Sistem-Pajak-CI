@@ -32,7 +32,7 @@
                                     <th style="width: 10px">#</th>
                                     <th>Pemilik Kendaraan</th>
                                     <th>Jenis Kendaraan</th>
-                                    <th>Status Pajak</th>
+                                    <th>Tenggat Pajak</th>
                                     <th style="width: 40px">Aksi</th>
                                 </tr>
                             </thead>
@@ -44,7 +44,7 @@
                                         <td><?= $num ?></td>
                                         <td><a href="<?= base_url(); ?>admin/detailkendaraan/<?= $kd['id']; ?>"><?= $kd['pemilik']; ?></a></td>
                                         <td><?= $kd['jenis']; ?></td>
-                                        <td><?= $kd['status_pajak']; ?></td>
+                                        <td><?= $kd['tenggat']; ?></td>
                                         <td><span>
                                                 <a class="btn btn-sm btn-warning" href="<?= base_url(); ?>admin/ubahkendaraan/<?= $kd['id']; ?>">Ubah</a>
                                                 <div class="mt-2 d-lg-none"></div>

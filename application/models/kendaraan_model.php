@@ -3,6 +3,7 @@ class Kendaraan_model extends CI_model
 {
     public function get_all_kendaraan()
     {
+        $this->db->order_by('tenggat', 'ASC');
         return $this->db->get('kendaraan')->result_array();
     }
 
@@ -10,6 +11,7 @@ class Kendaraan_model extends CI_model
     {
         return $this->db->get_where('kendaraan', ['id' => $id])->row_array();
     }
+
 
     public function get_kendaraan_user($nama)
     {
@@ -107,6 +109,12 @@ class Kendaraan_model extends CI_model
         ];
         $this->db->where('id', $id);
         $this->db->update('kendaraan', $data);
+    }
+
+    public function delete_kendaraan($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('kendaraan');
     }
     private function _uploadImage()
     {
