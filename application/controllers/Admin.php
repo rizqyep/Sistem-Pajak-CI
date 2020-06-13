@@ -248,7 +248,7 @@ class Admin extends CI_Controller
         $id_kendaraan = $kendaraan['id'];
         $this->notif_model->add_notif($nama, $id_kendaraan, $msg_notif);
         $this->kendaraan_model->himbau_pembayaran_pajak($id, "Menunggu Pembayaran", "Menunggu Pembayaran");
-        $url = base_url() . "admin/detailkendaraan/" . $id;
+        $url = base_url() . "admin/datakendaraan";
         $this->session->set_flashdata('notifikasi', 'dikirimkan!');
         redirect($url);
     }
