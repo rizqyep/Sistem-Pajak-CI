@@ -10,13 +10,13 @@
         <div class="row">
             <div class="col-lg-3 col-6">
                 <!-- small box -->
-                <div class="small-box bg-info">
+                <div class="small-box bg-danger">
                     <div class="inner">
                         <h3><?= $jumlah_input ?></h3>
                         <p>Menunggu Verifikasi</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-model-s"></i>
+                        <i class="ion ion-android-clipboard"></i>
                     </div>
                     <a href="<?= base_url(); ?>admin/pembayaran" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
@@ -24,13 +24,13 @@
             <!-- ./col -->
             <div class="col-lg-3 col-6">
                 <!-- small box -->
-                <div class="small-box bg-danger">
+                <div class="small-box bg-info">
                     <div class="inner">
                         <h3><?= $jumlah_bayar; ?></h3>
                         <p>Pembayaran Terverifikasi</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-pie-graph"></i>
+                        <i class="ion ion-android-done-all"></i>
                     </div>
                     <a href="<?= base_url(); ?>admin/historypembayaran" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
@@ -126,8 +126,9 @@
                                             </td>
                                         </tr>
                                 <?php
+                                        $num += 1;
                                     }
-                                    $num += 1;
+
                                 endforeach; ?>
                             </tbody>
                         </table>
